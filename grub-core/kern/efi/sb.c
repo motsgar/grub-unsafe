@@ -166,7 +166,9 @@ shim_lock_verifier_init (grub_file_t io __attribute__ ((unused)),
 
     /* Other files. */
     default:
-      return grub_error (GRUB_ERR_ACCESS_DENIED, N_("prohibited by secure boot policy"));
+      *flags = GRUB_VERIFY_FLAGS_SKIP_VERIFICATION;
+      return GRUB_ERR_NONE;
+      // return grub_error (GRUB_ERR_ACCESS_DENIED, N_("prohibited by secure boot policy"));
     }
 }
 
